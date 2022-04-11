@@ -103,6 +103,9 @@ typing = [
 ]
 security = ["safety>=1.10"]
 
+[tool.pdm.scripts]
+post_install = "pre-commit install"
+
 [tool.black]
 line-length = 120
 exclude = "tests/fixtures"
