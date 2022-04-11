@@ -1,11 +1,6 @@
 from pygls.capabilities import COMPLETION
+from pygls.lsp import CompletionItem, CompletionList, CompletionOptions, CompletionParams
 from pygls.server import LanguageServer
-from pygls.lsp import (
-    CompletionItem,
-    CompletionList,
-    CompletionOptions,
-    CompletionParams,
-)
 
 server = LanguageServer()
 

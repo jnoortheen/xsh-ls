@@ -10,16 +10,31 @@
 #   there's no `xsh_ls.__main__` in `sys.modules`.
 
 """Module that contains the command line application."""
+import argparse
 import logging
+import sys
 
 from arger import Arger
 
-from . import language_server
+from xsh_ls import language_server
 
-logging.basicConfig(filename="xsh-ls.log", level=logging.DEBUG, filemode="w")
+PROG = "xsh-ls"
 
 
-def cli(tcp=False, ws=False, host="127.0.0.1", port=2007):
+def get_version():
+    from importlib_metadata import version
+
+    return version(PROG)
+
+
+def cli(
+    tcp=False,
+    ws=False,
+    host="127.0.0.1",
+    port=2007,
+    version=False,
+    log_file: str = None,
+):
     """
         Start Xonsh Language server
     Args:
@@ -27,7 +42,18 @@ def cli(tcp=False, ws=False, host="127.0.0.1", port=2007):
         ws: Use WebSocket server
         host: Bind to this address
         port: Bind to this port
+        version: Display version info and exit
+        log_file: redirect logs to file specified
     """
+    if version:
+        print(get_version())
+        return
+
+    if log_file:
+        logging.basicConfig(filename=log_file, level=logging.DEBUG, filemode="w")
+    else:
+        logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+
     if tcp:
         language_server.server.start_tcp(host, port)
     elif ws:
@@ -49,11 +75,18 @@ def main(args) -> None:
         An exit code.
     """
     arger = Arger(
-        main,
-        prog="xsh-ls",  # for testing purpose. otherwise not required
+        cli,
+        prog=PROG,  # for testing purpose. otherwise not required
+        add_help=False,
     )
-    arger.run(args)
+    arger.add_argument(
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="show this help message and exit",
+    )
+    arger.run(*args, capture_sys=False)
 
 
 if __name__ == "__main__":
-    cli(ws=True)
+    cli(tcp=True)
