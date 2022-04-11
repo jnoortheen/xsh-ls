@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: 0.9.6
+_src_path: gh:pawamoy/copier-pdm
+author_email: jnoortheen@gmail.com
+author_fullname: Noortheen Raja J
+author_username: jnoortheen
+copyright_date: '2022'
+copyright_holder: Noortheen Raja J
+copyright_holder_email: jnoortheen@gmail.com
+copyright_license: GNU General Public License v3.0
+project_description: "Xonsh Lange\bage Server"
+project_name: xsh-ls
+python_package_command_line_name: xsh-ls
+python_package_distribution_name: xsh-ls
+python_package_import_name: xsh_ls
+repository_name: xsh-ls
+repository_namespace: jnoortheen
+repository_provider: github.com
+use_precommit: true
