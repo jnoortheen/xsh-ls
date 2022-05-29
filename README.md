@@ -6,9 +6,9 @@
 [![gitpod](https://img.shields.io/badge/gitpod-workspace-blue.svg?style=flat)](https://gitpod.io/#https://github.com/jnoortheen/xsh-ls)
 [![gitter](https://badges.gitter.im/join%20chat.svg)](https://gitter.im/xsh-ls/community)
 
-Xonsh Langeage Server
+Xonsh Language Server. This is in progress, and nothing functional as of now.
 
-## Installation
+# Installation
 
 With `pip`:
 ```bash
@@ -20,3 +20,7 @@ With [`pipx`](https://github.com/pipxproject/pipx):
 python3.7 -m pip install --user pipx
 pipx install xsh-ls
 ```
+
+# Links
+- https://github.com/openlawlibrary/pygls/blob/master/examples/json-extension/
+- https://github.com/pappasam/jedi-language-server
